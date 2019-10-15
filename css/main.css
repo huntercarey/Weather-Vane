@@ -1,3 +1,16 @@
 body {
     background-color: bisque;
 }
+
+/* span{
+    padding: none !important;
+} */
+
+/* input {
+    width: 400px;
+} */
+
+h4{
+    padding-top: 5px;
+    padding-right:5px;
+}
