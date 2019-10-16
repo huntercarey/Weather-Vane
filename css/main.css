@@ -2,15 +2,34 @@ body {
     background-color: bisque;
 }
 
-/* span{
-    padding: none !important;
-} */
-
-/* input {
-    width: 400px;
-} */
-
-h4{
+h4 {
     padding-top: 5px;
     padding-right:5px;
+}
+
+.weatherCard {
+    margin-top: 40px;
+    border: 2px white solid;
+    box-shadow: 5px 5px 5px rgb(89, 142, 255);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#remove {
+    border-top-left-radius: 7.5px;
+    opacity: .5;
+}
+
+#remove:hover {
+    opacity: 1;
+}
+
+h1 {
+    text-align: center;
+    margin: 12px 0;
+}
+
+.list-group li {
+    border: 2px solid white;
+    background-color: lightgray;
 }
