@@ -20,6 +20,7 @@
         }
     });
 
+    //When a button is clicked with the id of 'remove' in the document, call this function
     $(document).on('click', 'button#remove', function () {
         //Get the parent element of the button
         let parentDiv = $(this).parent(); //THIS refers to the element that triggered the event handler (in this case the button that was clicked)
