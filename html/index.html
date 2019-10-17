@@ -49,26 +49,31 @@
   <!-- WEATHER CARD -->
   <div class='container'>
     <div class='row'>
-      <div id='template' class='col-xs-12 col-lg-4'>
-        <div class='weatherCard'>
-          <!-- BUTTON TO REMOVE CARD -->
-          <button type='button' id='remove'>X</button>
-          <!-- LOCATION -->
-          <h1>Louisville</h1>
-          <!-- CURRENT TEMP -->
-          <h1>50&#8457</h1>
-          <!-- LIST OF WEATHER INFO -->
-          <ul class='list-group list-group-flush'>
-            <li class='list-group-item'>Location: Louisville</li>
-            <li class='list-group-item'>Current Conditions: Overcast</li>
-            <li class='list-group-item'>High Temp: 75&#8457</li>
-            <li class='list-group-item'>Low Temp: 30&#8457</li>
-            <li class='list-group-item'>Chance of Precipitation: 40%</li>
-          </ul>
-        </div>
+    </div>
+  </div>
+
+  <!-- WEATHER CARD TEMPLATE -->
+  <div id='template' style='display: none;'>
+    <div class='col-xs-12 col-lg-4'>
+      <div class='weatherCard'>
+        <!-- BUTTON TO REMOVE CARD -->
+        <button type='button' id='remove'>X</button>
+        <!-- LOCATION -->
+        <h1>@@city@@</h1>
+        <!-- CURRENT TEMP -->
+        <h1>@@currentTemp@@&#8457</h1>
+        <!-- LIST OF WEATHER INFO -->
+        <ul class='list-group list-group-flush'>
+          <li class='list-group-item'>Location: @@cityState@@</li>
+          <li class='list-group-item'>Current Conditions: @@conditions@@</li>
+          <li class='list-group-item'>High Temp: @@highTemp@@&#8457</li>
+          <li class='list-group-item'>Low Temp: @@lowTemp@@&#8457</li>
+          <li class='list-group-item'>Chance of Precipitation: @@precipitation@@%</li>
+        </ul>
       </div>
     </div>
   </div>
+
   <!-- JQuery, popper.js, and Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous">
