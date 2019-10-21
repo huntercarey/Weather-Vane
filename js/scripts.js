@@ -46,11 +46,13 @@ function getWeatherInfo(latitude, longitude, city, state) {
        //We need to get the temperature from dark sky data
        let temperature = data.currently.temperature;
        let conditions = data.currently.summary;
+       let weatherIcon = data.currently.icon;
 
        let currentDayInfo = data.daily.data[0];
        let highTemp = Math.round(currentDayInfo.temperatureHigh);
        let lowTemp = Math.round(currentDayInfo.temperatureLow);
        let precipChance = Math.round(currentDayInfo.precipProbability * 100);
+       
 
        //Replacing the string '@@city@@' with the city we pass into this function in the html
        templateHTML = templateHTML.replace('@@city@@', city);
@@ -66,6 +68,32 @@ function getWeatherInfo(latitude, longitude, city, state) {
        templateHTML = templateHTML.replace('@@lowTemp@@', lowTemp);
         //repeat
        templateHTML = templateHTML.replace('@@precipitation@@', precipChance);
+       //repeat
+       console.log(weatherIcon);
+       templateHTML = templateHTML.replace('@@imageURL@@', '../img/' + getBackgroundPath(weatherIcon));
+
+       for (var i = 0; i < 5; i++) {
+           //Set the date for each day
+           if (i > 0) {
+               //Get the current date and add i days to it
+               let date = new Date();
+               date.setDate(date.getDate() + i);
+
+               //Get the month (0-11) from the date and add 1 to it for accuracy
+               let month = date.getMonth() + 1;
+               //Get the day from the date
+               let day = date.getDate();
+
+               //Replace the placeholder text in the template for date i
+               templateHTML = templateHTML.replace('@@date' + i + '@@', month + '/' + day);
+           }
+           //Get the weather data for the day based on i
+           let currentDayWeatherData = data.daily.data[i];
+
+           templateHTML = templateHTML.replace('@@max' + i + '@@', Math.round(currentDayWeatherData.temperatureMax));
+           templateHTML = templateHTML.replace('@@low' + i + '@@', Math.round(currentDayWeatherData.temperatureMin));
+           templateHTML = templateHTML.replace('@@precip' + i + '@@', currentDayWeatherData.precipProbability);
+       }
 
        //Add the configured templateHTML to our row in the card container
        $('.row').append(templateHTML);
@@ -103,3 +131,29 @@ function geocode(location) {
         console.log("Geocoding call finished");
     })
 }
+
+
+function getBackgroundPath (iconString) {
+    switch (iconString) {
+        case 'cloudy':
+            return 'cloudy.jpg';
+        case 'clear-night':
+            return 'clear-night.jpg'
+        case 'fog':
+            return 'fog.jpg';
+        case 'partly-cloudy-day':
+            return 'partly-cloudy-day.jpg';
+        case 'partly-cloudy-night':
+            return 'partly-cloudy-night.jpg';
+        case 'rain':
+            return 'rain.jpg'
+        case 'sleet':
+            return 'sleet.jpg'
+        case 'snow':
+            return 'snow.jpg';
+        case 'wind':
+            return 'wind.jpg';
+        default:
+            return 'clear-day.jpg';
+    }
+};
